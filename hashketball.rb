@@ -127,3 +127,77 @@ def game_hash
 end
 
 # Write code here
+
+def num_points_scored(name)
+  game_hash[:home][:players].each { |key|
+    if key[:player_name] == name
+          return key[:points]
+    end
+  }
+    game_hash[:away][:players].each { |key|
+    if key[:player_name] == name
+          return key[:points]
+    end
+  }
+end
+
+def shoe_size(name)
+    game_hash[:home][:players].each { |key|
+    if key[:player_name] == name
+          return key[:shoe]
+    end
+  }
+    game_hash[:away][:players].each { |key|
+    if key[:player_name] == name
+          return key[:shoe]
+    end
+  }
+end
+
+def team_colors(name)
+  home = game_hash[:home]
+  away = game_hash[:away]
+  if home[:team_name] == name
+    home[:colors]
+  else
+    away[:colors]
+  end
+end
+
+def team_names
+  [game_hash[:home][:team_name], game_hash[:away][:team_name]]
+end
+
+def player_numbers(name)
+  team = []
+  team_nums = []
+  if home = game_hash[:home][:team_name] == name
+    team = game_hash[:home][:players]
+  else
+    team = game_hash[:away][:players]
+  end
+  team.each { |x| team_nums << x[:number]}
+  team_nums
+end
+
+def player_stats(name)
+  teams = game_hash[:home][:players].concat(game_hash[:away][:players])
+  teams.each { |x|
+    if x[:player_name] == name
+      return x
+    end
+  }
+end
+
+def big_shoe_rebounds
+  biggest = 0
+  rebound = 0
+  teams = game_hash[:home][:players].concat(game_hash[:away][:players])
+  teams.each { |x|
+      if x[:shoe] > biggest
+        biggest = x[:shoe]
+        rebound = x[:rebounds]
+    end
+  }
+  rebound
+end
