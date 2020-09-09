@@ -181,17 +181,22 @@ def player_stats(player_x)
     value[:players].each do |value2|
       if value2[:player_name] == player_x
         return value2
-  binding.pry
 end
     end
   end
 end
 
 def big_shoe_rebounds
-  game_hash.each do |key, value|
-    value[:players].each do |value2|
-      value2[:shoe]
-      #binding.pry
-    end 
-  end 
+  biggest_shoe = nil
+  rebounds = nil
+   game_hash.each do |home_away_keys, team_name_colors_players_keys|
+     team_name_colors_players_keys[:players].each do |first_player_hash|
+       if biggest_shoe == nil ||  first_player_hash[:shoe] > biggest_shoe
+         biggest_shoe = first_player_hash[:shoe]
+         rebounds = first_player_hash[:rebounds]
+        #binding.pry
+      end
+     end
+   end 
+   rebounds
 end
