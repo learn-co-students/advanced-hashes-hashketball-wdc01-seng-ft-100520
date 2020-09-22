@@ -139,7 +139,30 @@ def num_points_scored(player_input)
   end
 end
 
+def shoe_size(player_input)
+player_list.each do |i|
+    if i[:player_name] == player_input
+    return i[:shoe]
+    end
+  end
+end
 
+def team_colors(team_name)
+  game_hash.each do |location, team_info|
+    if team_info[:team_name] == team_name
+    return team_info[:colors] 
+    end
+  end
+end
 
-binding.pry
+def team_names
+  game_hash.map do |location, team_info|
+    team_info[:team_name]
+  end
+end
+
+def player_numbers
+end
+
+#binding.pry
 # Write code here
