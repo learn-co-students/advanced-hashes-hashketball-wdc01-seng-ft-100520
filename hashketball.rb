@@ -161,7 +161,14 @@ def team_names
   end
 end
 
-def player_numbers
+def player_numbers(team_name)
+  #return array, use .map?
+  game_hash.each do |location, team_info|
+    if team_info[:team_name] == team_name
+    end
+    player_list[0..5][:number].map
+    binding.pry
+  end
 end
 
 #binding.pry
