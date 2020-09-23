@@ -132,17 +132,17 @@ def player_list
 end
 
 def num_points_scored(player_input)
-  player_list.each do |i|
-    if i[:player_name] == player_input
-    return i[:points]
+  player_list.each do |players|
+    if players[:player_name] == player_input
+    return players[:points]
     end
   end
 end
 
 def shoe_size(player_input)
-player_list.each do |i|
-    if i[:player_name] == player_input
-    return i[:shoe]
+  player_list.each do |players|
+    if players[:player_name] == player_input
+    return players[:shoe]
     end
   end
 end
@@ -162,13 +162,10 @@ def team_names
 end
 
 def player_numbers(team_name)
-  #return array, use .map?
-  game_hash.each do |location, team_info|
-    if team_info[:team_name] == team_name
-    end
-    player_list[0..5][:number].map
-    binding.pry
-  end
+  #tests for Charlotte_numbers and Brooklyn_numbers
+  #create a team split method to help w/ this, end in array 
+  #use .map for array 
+end
 end
 
 #binding.pry
