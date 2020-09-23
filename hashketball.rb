@@ -178,8 +178,8 @@ def player_numbers(team)
 end
   
 def player_stats(player_name)
-  player_list.map do |stat_category|  #iterate through player_list
-    if stat_category[:player_name] == player_name   #when player_name hash matches the input name 
+  player_list.map do |stat_category|
+    if stat_category[:player_name] == player_name
     return stat_category   #return the player's full hash
     end
   end
