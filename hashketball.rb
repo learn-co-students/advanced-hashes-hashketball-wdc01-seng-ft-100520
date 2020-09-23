@@ -178,19 +178,19 @@ def player_numbers(team)
 end
   
 def player_stats(player_name)
-  player_list.each do |stat_category|
-    if player_list[0][:player_name] == player_name
-      stat_category(player_name)
-      #binding.pry
+  player_list.map do |stat_category|  #iterate through player_list
+    if stat_category[:player_name] == player_name   #when player_name hash matches the input name 
+    return stat_category   #return the player's full hash
     end
   end
 end
 
+
 def big_shoe_rebounds
-  #find player w/ largest shoe size 
-  #if (player) == (player)(largest shoe)
+  #find player w/ largest shoe size -- player_list[:shoe].max? do i need to iterate first?
+  #if (player input) == (player w/ largest shoe)
   #return (player)(rebounds)
 end
-#binding.pry
+
 #binding.pry
 # Write code here
