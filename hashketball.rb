@@ -161,17 +161,21 @@ def team_names
   end
 end
 
-
 def team_identifier (team)
   if game_hash[:home][:team_name] == team 
     game_hash[:home]
   elsif team == [:away]
     game_hash[:away]
+    binding.pry
 end
-binding.pry
 end
 
 def player_numbers(team_name)
+  team_identifier[:players].map do |stat_category, statistic|
+    statistic[:number]
+  end
+end
+  
   #tests for Charlotte_numbers and Brooklyn_numbers
   #create a team split method to help w/ this, end in array 
   #use .map for array 
