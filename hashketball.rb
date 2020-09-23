@@ -178,8 +178,11 @@ def player_numbers(team)
 end
   
 def player_stats(player_name)
-  player_list.each do |stat_category, statistic|
-    
+  player_list.each do |stat_category|
+    if player_list[0][:player_name] == player_name
+      stat_category(player_name)
+      #binding.pry
+    end
   end
 end
 
