@@ -131,6 +131,7 @@ def player_list
   game_hash[:home][:players]+game_hash[:away][:players]
 end
 
+
 def num_points_scored(player_input)
   player_list.each do |players|
     if players[:player_name] == player_input
@@ -176,9 +177,17 @@ def player_numbers(team)
   end
 end
   
-  #tests for Charlotte_numbers and Brooklyn_numbers
-  #create a team split method to help w/ this, end in array 
-  #use .map for array 
+def player_stats(player_name)
+  player_list.each do |stat_category, statistic|
+    
+  end
+end
 
+def big_shoe_rebounds
+  #find player w/ largest shoe size 
+  #if (player) == (player)(largest shoe)
+  #return (player)(rebounds)
+end
+#binding.pry
 #binding.pry
 # Write code here
