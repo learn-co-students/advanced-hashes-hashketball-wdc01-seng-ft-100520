@@ -1,4 +1,8 @@
 # Write your code below game_hash
+
+require 'pry'
+require './hashketball.rb'
+
 def game_hash
   {
     home: {
@@ -127,3 +131,87 @@ def game_hash
 end
 
 # Write code here
+# Build a method, num_points_scored that takes in an argument of a player's name and returns the number of points scored for that player.
+
+ def num_points_scored(player_search)
+  game_hash.each do |team, team_info|
+    #binding.pry 
+    team_info[:players].each do |player|
+      if player[:player_name] == player_search
+        return player[:points]
+      end
+    end
+  end
+end
+
+def shoe_size(name)
+  game_hash.each do |team, team_info|
+    team_info[:players].each do |player|
+      if player[:player_name] == name
+        return player[:shoe]
+        #binding.pry
+      end
+    end
+  end
+end
+
+def team_colors(team_input)
+   if team_input.downcase == "charlotte hornets" 
+    return game_hash[:away][:colors]
+  else return game_hash[:home][:colors]
+  end
+end
+
+def team_names
+  game_hash.map do |team, team_info|
+    team_info[:team_name]
+    #binding.pry
+  end
+end
+  
+def player_numbers(team_name)
+  jersey_arr = []
+  game_hash.each do |team, team_info|
+    if team_info[:team_name] == team_name
+      team_info.each do |key, value|
+        if key == :players
+          value.each do |player|
+            jersey_arr.push(player[:number])
+        end
+      end
+    end
+   end
+  end
+  return jersey_arr
+end
+
+def player_stats(players_name)
+  
+  game_hash.each do |team, team_info|
+    team_info.each do |key, value|
+    if key == :players
+      value.each do |player|
+         if players_name == player[:player_name]
+             #binding.pry
+           return player
+         end
+        end
+      end
+    end
+  end
+end
+
+def big_shoe_rebounds
+  largest_shoe_size = 0 
+  rebounds = 0
+  game_hash.each do |team, team_info|
+    team_info[:players].each do |player|
+      if player[:shoe] > largest_shoe_size
+        largest_shoe_size = player[:shoe]
+        rebounds = player[:rebounds]
+      end
+    end
+  end
+  return rebounds
+end
+
