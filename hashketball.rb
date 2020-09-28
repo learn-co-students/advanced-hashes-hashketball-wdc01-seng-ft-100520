@@ -1,3 +1,4 @@
+require 'pry'
 # Write your code below game_hash
 def game_hash
   {
@@ -127,3 +128,84 @@ def game_hash
 end
 
 # Write code here
+def num_points_scored players_name
+
+  game_hash.each {|key,value|
+      count=0 
+      while (count < 5) do
+      if (game_hash[key][:players][count][:player_name] == players_name) then
+        return game_hash[key][:players][count][:points]
+      end
+      count += 1
+    end
+  }
+end
+
+def shoe_size players_name
+  game_hash.each {|key,value|
+      count=0 
+      while (count < 5) do
+      if (game_hash[key][:players][count][:player_name] == players_name) then
+       # binding.pry
+        return game_hash[key][:players][count][:shoe]
+      end
+      count += 1
+    end
+  }
+end
+
+def team_colors team_name
+  game_hash.each do |key, value|
+    if game_hash[key][:team_name] == team_name then
+      return game_hash[key][:colors]
+    end  
+  end
+end
+
+def team_names 
+  return [game_hash[:home][:team_name],game_hash[:away][:team_name]]
+end
+
+def player_numbers team_name
+  player_number_array = []
+   game_hash.each do |key, value|
+    if game_hash[key][:team_name] == team_name then
+      count = 0
+      while count < 5 do
+        player_number_array.push(game_hash[key][:players][count][:number])
+        count += 1
+      end
+    end  
+  end
+  player_number_array
+end
+
+def player_stats players_name
+    game_hash.each {|key,value|
+      count=0 
+      while (count < 5) do
+      if (game_hash[key][:players][count][:player_name] == players_name) then
+       # binding.pry
+        return game_hash[key][:players][count]
+      end
+      count += 1
+    end
+  }
+end
+
+def big_shoe_rebounds
+  biggest_shoe = -1
+  rebounds = -1
+      game_hash.each {|key,value|
+      count=0 
+      while (count < 5) do
+      if (game_hash[key][:players][count][:shoe] > biggest_shoe) then
+       # binding.pry
+        biggest_shoe = game_hash[key][:players][count][:shoe]
+        rebounds = game_hash[key][:players][count][:rebounds]
+      end
+      count += 1
+    end
+  }
+  rebounds
+end
