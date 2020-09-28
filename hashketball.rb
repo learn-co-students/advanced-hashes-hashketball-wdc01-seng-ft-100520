@@ -1,6 +1,8 @@
 # Write your code below game_hash
+require 'pry'
+
 def game_hash
-  {
+  hash = {
     home: {
       team_name: "Brooklyn Nets",
       colors: ["Black", "White"],
@@ -124,6 +126,103 @@ def game_hash
       ]
     }
   }
+  hash
 end
 
-# Write code here
+
+
+def num_points_scored(player)
+  hash = game_hash
+  hash.each{|team, data|
+    data.each{|quality, inner_data|
+      if quality == :players
+        inner_data.each{|player_data|
+          player_data.each{|type|
+            if (hash[team][quality][inner_data.index(player_data)][:player_name] == player)
+              return hash[team][quality][inner_data.index(player_data)][:points]
+            end 
+          }
+        }
+      end   
+    }
+  }
+end
+
+def shoe_size(player)
+  hash = game_hash
+  hash.each{|team, data|
+    data.each{|quality, inner_data|
+      if quality == :players
+        inner_data.each{|player_data|
+          player_data.each{|type|
+            if (hash[team][quality][inner_data.index(player_data)][:player_name] == player)
+              return hash[team][quality][inner_data.index(player_data)][:shoe]
+            end 
+          }
+        }
+      end   
+    }
+  }
+end
+
+def team_colors(team)
+  hash = game_hash
+  hash.each {|team_name, data|
+    if hash[team_name][:team_name] == team
+      return hash[team_name][:colors]
+    end 
+  }
+end   
+
+def team_names
+  hash = game_hash
+  names = []
+  hash.each{|team, data|
+    names << hash[team][:team_name]
+  }
+  names
+end 
+
+def player_numbers(team_name)
+  hash = game_hash
+  numbers = []
+  hash.each{|team, data|
+    if hash[team][:team_name] == team_name
+      hash[team][:players].each{|player_data|
+        index = hash[team][:players].index(player_data)
+        numbers << hash[team][:players][index][:number]
+      }
+    end 
+  }
+  numbers 
+end 
+
+def player_stats(player)
+  hash = game_hash
+  hash.each{|team, data|
+    hash[team][:players].each{|player_data|
+      index = hash[team][:players].index(player_data)
+      if hash[team][:players][index][:player_name] == player 
+        return player_data
+      end 
+    }
+  }
+end 
+
+def big_shoe_rebounds
+  hash = game_hash 
+  max = 0
+  rebounds = 0
+  hash.each{|team, data|
+    hash[team][:players].each{|player_data|
+      index = hash[team][:players].index(player_data)
+      if hash[team][:players][index][:shoe] > max
+        max = hash[team][:players][index][:shoe]
+        rebounds = hash[team][:players][index][:rebounds]
+      end 
+    }
+  }
+  rebounds 
+end 
+
+p big_shoe_rebounds
