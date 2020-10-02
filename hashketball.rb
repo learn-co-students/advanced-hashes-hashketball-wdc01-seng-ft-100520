@@ -129,6 +129,7 @@ end
 
 
 def num_points_scored(player_name)
+  
   game_hash.each do |teams, team_data|
     team_data[:players].each do |player|
       if player[:player_name] == player_name
@@ -139,6 +140,7 @@ def num_points_scored(player_name)
 end 
 
 def shoe_size(player_name)
+  
   game_hash.each do |teams, team_data|
     team_data[:players].each do |player|
       if player[:player_name] == player_name
@@ -164,6 +166,7 @@ def team_names
 end
 
 def player_numbers(team_name)
+  
   output = []
   game_hash.each do |teams , team_data|
    if team_data[:team_name] == team_name 
@@ -172,18 +175,42 @@ def player_numbers(team_name)
       value.each do |player|
         output.push(player[:number])
       end 
-      end 
     end 
    end 
+  end 
  end 
  return output
 end 
 
-# def player_stats
+def player_stats(player_name)
   
-# end 
+  game_hash.each do |teams, team_data|
+    team_data.each do |key, value|
+      if key == :players 
+        value.each do |player|
+          if player[:player_name] == player_name
+            return player
+          end 
+        end 
+      end 
+    end
+  end
+end
 
-# def big_shoe_rebounds
-
-# end 
+      
+def big_shoe_rebounds
+  
+  biggest_shoe = 0 
+  most_rebounds = 0 
+  
+  game_hash.each do |teams, team_data|
+    team_data[:players].each do |player|
+      if player[:shoe] > biggest_shoe
+        biggest_shoe = player[:shoe]
+        most_rebounds = player[:rebounds]
+      end 
+    end 
+  end 
+  return most_rebounds
+end 
 
